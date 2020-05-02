@@ -1,0 +1,20 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+pytest = "*"
+pytest-cov = "*"
+
+[packages]
+importlib-metadata = "*"
+xlrd = "*"
+python-snappy = "*"
+pytest = "*"
+pywin32 = "*"
+libsnappy-dev = "*"
+libsnappy = "*"
+
+[requires]
+python_version = "3.7"
