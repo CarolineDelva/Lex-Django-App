@@ -10,11 +10,11 @@ pytest-cov = "*"
 [packages]
 importlib-metadata = "*"
 xlrd = "*"
-python-snappy = "*"
 pytest = "*"
 pywin32 = "*"
-libsnappy-dev = "*"
-libsnappy = "*"
+awscli = "*"
+python-dotenv = "*"
+csci-utils = {editable = true,git = "https://github.com/csci-e-29/2020sp-csci-utils-CarolineDelva"}
 
 [requires]
 python_version = "3.7"
