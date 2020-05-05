@@ -34,4 +34,5 @@ jobs:
         - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
     - stage: answers
       script:
+        - make data
         - python3 -m approject

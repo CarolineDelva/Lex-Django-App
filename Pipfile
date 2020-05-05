@@ -17,6 +17,8 @@ python-dotenv = "*"
 csci-utils = {editable = true,git = "https://github.com/csci-e-29/2020sp-csci-utils-CarolineDelva"}
 luigi = "*"
 requests = "*"
+numpy = "*"
+pyarrow = "*"
 
 [requires]
 python_version = "3.7"
