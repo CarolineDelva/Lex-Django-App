@@ -1,12 +1,17 @@
 import numpy as np 
-from .data import load_vectors, load_words, load_data
+from .data import load_glove_words
 import re
+
+
+
+### fix for new data 
+
 class WordEmbedding(object):
-    def __init__(self, words, vecs):
+    def __init__(self, words):
         # Initializeding with the word list
-        self.words = words
+        self.words = list(words.keys())
         # Initializeding with the vectors
-        self.vecs = vecs 
+        self.vecs = np.array(list(words.values()))
 
     def __call__(self, word):
         """Embed a word
@@ -26,7 +31,7 @@ class WordEmbedding(object):
 
 
     @classmethod
-    def from_files(cls, word_file, vec_file):
+    def from_files(cls, word_file):
         """Instantiate an embedding from files
 
         Example::
@@ -36,14 +41,17 @@ class WordEmbedding(object):
         :rtype: cls
         """
         # Applying the class to the text file and verctors file
-        return cls(load_words(word_file), load_vectors(vec_file))
+        return cls(load_glove_words(word_file))
     
     
-    def tokenize(self, text):
-        # Get all "words", including contractions
-        # eg tokenize("Hello, I'm Scott") --> ['hello', "i'm", 'scott']
-        # Removing useless chararacters from strings
-        return re.findall(r"\w[\w']+", text.lower())
+    def tokenize(self, sentence):
+        """
+        :params sentence: string
+        """
+    
+        tok_sentences = re.findall(r"[\w]+[']*[\w]+|[\w]+|[.,!?;]", sentence.lower() )
+                    
+        return tok_sentences
 
     def embed_document(self, text):
         """Convert text to vector, by finding vectors for each word and combining
