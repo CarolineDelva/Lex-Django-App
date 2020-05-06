@@ -6,6 +6,9 @@ verify_ssl = true
 [dev-packages]
 pytest = "*"
 pytest-cov = "*"
+pytest-django = "*"
+django-debug-toolbar = "*"
+factory-boy = "*"
 
 [packages]
 importlib-metadata = "*"
@@ -14,11 +17,18 @@ pytest = "*"
 pywin32 = "*"
 awscli = "*"
 python-dotenv = "*"
-csci-utils = {editable = true,git = "https://github.com/csci-e-29/2020sp-csci-utils-CarolineDelva"}
 luigi = "*"
 requests = "*"
 numpy = "*"
-pyarrow = "*"
+django = "*"
+django-environ = "*"
+djangorestframework = "*"
+django-model-utils = "*"
+argon2-cffi = "*"
+django-allauth = "*"
+django-crispy-forms = "*"
+django-extensions = "*"
+coreapi = "*"
 
 [requires]
 python_version = "3.7"
