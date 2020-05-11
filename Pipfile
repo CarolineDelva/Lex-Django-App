@@ -30,8 +30,6 @@ django-crispy-forms = "*"
 django-extensions = "*"
 coreapi = "*"
 django-luigi = "*"
-csci-utils = {editable = true,git = "https://github.com/csci-e-29/2020sp-csci-utils-CarolineDelva"}
-python-snappy = {path = "./python_snappy-0.5.4-cp36-cp36m-macosx_10_7_x86_64.whl"}
 dotenv = "*"
 
 [requires]
