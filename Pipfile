@@ -30,7 +30,7 @@ django-crispy-forms = "*"
 django-extensions = "*"
 coreapi = "*"
 django-luigi = "*"
-dotenv = "*"
+
 
 [requires]
 python_version = "3.7"
