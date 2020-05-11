@@ -5,6 +5,11 @@ python:
 
 before_install:
   - echo -e "machine github.com\n  login $CI_USER_TOKEN" > ~/.netrc
+  - sudo apt-get update
+  - sudo apt-get -y install gcc 
+  - sudo apt-get update
+  - sudo apt-get -y install libsnappy-dev
+  - pip install pypiwin32
 
 install:
   - pip install pipenv
