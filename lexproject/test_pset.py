@@ -3,10 +3,6 @@ from django.utils import timezone
 
 from rest_framework import status
 from rest_framework.test import APIClient, APITestCase
-from yelp_reviews.models import DimDate, FactReview
-
-
- 
 
 
 # Create your tests here.

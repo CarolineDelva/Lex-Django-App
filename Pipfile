@@ -4,33 +4,33 @@ url = "https://pypi.org/simple"
 verify_ssl = true
 
 [dev-packages]
+django-debug-toolbar = "*"
+factory-boy = "*"
 pytest = "*"
 pytest-cov = "*"
 pytest-django = "*"
-django-debug-toolbar = "*"
-factory-boy = "*"
 
 [packages]
-importlib-metadata = "*"
-xlrd = "*"
-pytest = "*"
-pywin32 ==223
-awscli = "*"
-python-dotenv = "*"
-luigi = "*"
-requests = "*"
-numpy = "*"
-django = "*"
-django-environ = "*"
-djangorestframework = "*"
-django-model-utils = "*"
 argon2-cffi = "*"
+awscli = "*"
+coreapi = "*"
+django = "*"
 django-allauth = "*"
 django-crispy-forms = "*"
+django-environ = "*"
 django-extensions = "*"
-coreapi = "*"
 django-luigi = "*"
-
+django-model-utils = "*"
+djangorestframework = "*"
+importlib-metadata = "*"
+luigi = "*"
+numpy = "*"
+pytest = "*"
+python-dotenv = "*"
+"pywin32 =" = 223
+requests = "*"
+xlrd = "*"
+pywin32 = {path = "./pywin32-227-cp36-cp36m-win_amd64.whl"}
 
 [requires]
 python_version = "3.7"

@@ -9,7 +9,7 @@ before_install:
   - sudo apt-get -y install gcc 
   - sudo apt-get update
   - sudo apt-get -y install libsnappy-dev
-  - pip install pywin32==227
+ 
 
 install:
   - pip install pipenv
