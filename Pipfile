@@ -30,7 +30,7 @@ python-dotenv = "*"
 "pywin32 =" = 223
 requests = "*"
 xlrd = "*"
-pywin32 = {path = "./pywin32-227-cp36-cp36m-win_amd64.whl"}
+
 
 [requires]
 python_version = "3.7"
