@@ -2,10 +2,13 @@ language: python
 dist: xenial
 python:
   - 3.7
-  
+
 os: windows
 
 before_install:
+  - choco install python3
+  - export PATH="/c/Python38:/c/Python38/Scripts:$PATH"
+  - python -m pip install --upgrade pip wheel
   - echo -e "machine github.com\n  login $CI_USER_TOKEN" > ~/.netrc
   - sudo apt-get update
   - sudo apt-get -y install gcc 
