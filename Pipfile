@@ -14,7 +14,7 @@ factory-boy = "*"
 importlib-metadata = "*"
 xlrd = "*"
 pytest = "*"
-pywin32 = "*"
+pywin32 ==223
 awscli = "*"
 python-dotenv = "*"
 luigi = "*"

@@ -1,68 +1,74 @@
-#!/usr/bin/env python
-# -*- coding: utf-8 -*-
+from django.test import TestCase, Client
+from django.utils import timezone
 
-from approject.hash_str import hash_str
-from approject.io import atomic_write
-
-import os
-from tempfile import TemporaryDirectory
-from unittest import TestCase
-import tempfile
+from rest_framework import status
+from rest_framework.test import APIClient, APITestCase
+from yelp_reviews.models import DimDate, FactReview
 
 
-class FakeFileFailure(IOError):
-    pass
+ 
 
 
-class HashTests(TestCase):
-    def test_basic(self):
-        self.assertEqual(
-            hash_str("world!", salt="hello, ").hex()[:6], "68e656")
+# Create your tests here.
+class TestYelpAPI:
+
+    URL_PREFIX = '/yelp/api/'
+   
+    def test_dates_list_get(self, client, dates_reviews):
+        url = self.URL_PREFIX + 'dates/'
+        response = client.get(url)
+        assert response.status_code == status.HTTP_200_OK
+
+    def test_dates_retrieve_get(self, client, dates_reviews):
+        url = self.URL_PREFIX + 'dates/' + str(dates_reviews[0].id) + '/'
+        response = client.get(url)
+        assert response.status_code == status.HTTP_200_OK
+
+    def test_facts_review_list_get(self, client, dates_reviews):
+        url = self.URL_PREFIX + 'facts/'
+        response = client.get(url)
+        assert response.status_code == status.HTTP_200_OK
+
+    def test_facts_review_retrieve_get(self, client, dates_reviews):
+        url = self.URL_PREFIX + 'facts/' + str(dates_reviews[2].id) + '/'
+        response = client.get(url)
+        assert response.status_code == status.HTTP_200_OK
+
+    def test_year_review_list_get(self, client, dates_reviews):
+        url = self.URL_PREFIX + 'by_year' + "/"
+        response = client.get(url)
+        assert response.status_code == status.HTTP_200_OK
+
+def test_yelp_endpoint(client, dates_reviews):
+    url = '/yelp/'
+    response = client.get(url)
+    assert response.status_code == status.HTTP_200_OK
+    
+class TestYelpModels:
+    def test_dim_dates_model(self, db):
+        date_1 = timezone.now()
+        dim_date_1 = DimDate.objects.create(date=date_1)
+        date_2 = date_1 - timezone.timedelta(days=2)
+        dim_date_1.date = date_2
+        dim_date_1.save()
+        assert dim_date_1.date == date_2
+
+    def test_fact_review_model(self, db):
+        date_1 = timezone.now()
+        dim_date_1 = DimDate.objects.create(date=date_1)
+        fact_review = FactReview.objects.create(date=dim_date_1)
+
+        fact_review.useful = 20
+        fact_review.cool = 10
+        fact_review.stars = 7
+        fact_review.funny = 6
+
+        fact_review.save()
+        assert fact_review.useful == 20
+        assert fact_review.cool == 10
+        assert fact_review.stars == 7
+        assert fact_review.funny == 6
 
 
-class AtomicWriteTests(TestCase):
-    def test_atomic_write(self):
-        """Ensure file exists after being written successfully"""
 
-        with TemporaryDirectory() as tmp:
-            fp = os.path.join(tmp, "asdf.txt")
-
-            with atomic_write(fp, "w") as f:
-                assert not os.path.exists(fp)
-                tmpfile = f.name
-                f.write("asdf")
-
-            assert not os.path.exists(tmpfile)
-            assert os.path.exists(fp)
-
-            with open(fp) as f:
-                self.assertEqual(f.read(), "asdf")
-
-    def test_atomic_failure(self):
-        """Ensure that file does not exist after failure during write"""
-
-        with TemporaryDirectory() as tmp:
-            fp = os.path.join(tmp, "asdf.txt")
-
-            with self.assertRaises(FakeFileFailure):
-                with atomic_write(fp, "w") as f:
-                    tmpfile = f.name
-                    assert os.path.exists(tmpfile)
-                    raise FakeFileFailure()
-
-            assert not os.path.exists(tmpfile)
-            assert not os.path.exists(fp)
-
-    def test_file_exists(self):
-        """Ensure an error is raised when a file exists"""
-
-        def test_raise():
-            f = tempfile.NamedTemporaryFile()
-            with atomic_write(f.name, "w") as f:
-                pass
-        self.assertRaises(FileExistsError, test_raise)
-        """
-        This test raises a FileExistsError if a temporary file already exists
-        in the directory. It evokes the NamedTemporyFile function and uses the
-        atomic_write function in a writing mode.
-        """
+    
