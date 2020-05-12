@@ -13,6 +13,7 @@ before_install:
   - python -m pip install pipenv
  
 install:
+  - py -m pip uninstall pipenv
   - py -m pip install pipenv
   - pipenv sync
 
