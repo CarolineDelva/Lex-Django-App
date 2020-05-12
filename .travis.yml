@@ -27,7 +27,7 @@ jobs:
   include:
     - stage: test      
       install:
-        - pipenv install --dev --ignore-pipfile --deploy
+        - pipenv sync
       before_script: # code coverage tool
          - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
          - chmod +x ./cc-test-reporter
