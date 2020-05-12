@@ -10,6 +10,7 @@ before_install:
   - choco install python3
   - export PATH="/c/Python38:/c/Python36/Scripts:$PATH"
   - python -m pip install --upgrade pip wheel
+  - python -m pip install pipenv
  
 install:
   - py -m pip install pipenv
