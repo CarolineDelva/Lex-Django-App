@@ -15,7 +15,7 @@ before_install:
 install:
   - py -m pip uninstall pipenv
   - py -m pip install pipenv
-  - pipenv sync
+  - pipenv install --system --deploy --ignore-pipfile
 
 env:
   region: us-east-1
@@ -29,7 +29,7 @@ jobs:
   include:
     - stage: test      
       install:
-        - pipenv sync
+        - pipenv install --system --deploy --ignore-pipfile
       before_script: # code coverage tool
          - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
          - chmod +x ./cc-test-reporter
@@ -43,4 +43,5 @@ jobs:
       script:
         - make data
         - python manage.py migrate
-        - python3 -m approject
+        - python manage.py lexproject
+        - python3 -m lexproject
