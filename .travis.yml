@@ -1,13 +1,20 @@
-language: python
+language: sh
 dist: xenial
 python:
   - 3.7
 
-before_install:
-  - echo -e "machine github.com\n  login $CI_USER_TOKEN" > ~/.netrc
+os: windows
 
+
+before_install:
+  - choco install python3
+  - export PATH="/c/Python38:/c/Python36/Scripts:$PATH"
+  - python -m pip install --upgrade pip wheel
+  - python -m pip install pipenv
+ 
 install:
-  - pip install pipenv
+  - py -m pip uninstall pipenv
+  - py -m pip install pipenv
   - pipenv install --system --deploy --ignore-pipfile
 
 env:
@@ -22,7 +29,7 @@ jobs:
   include:
     - stage: test      
       install:
-        - pipenv install --dev --ignore-pipfile --deploy
+        - pipenv install --system --deploy --ignore-pipfile
       before_script: # code coverage tool
          - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
          - chmod +x ./cc-test-reporter
@@ -34,4 +41,7 @@ jobs:
         - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
     - stage: answers
       script:
-        - python3 -m approject
+        - make data
+        - python manage.py migrate
+        - python manage.py lexproject
+        - python3 -m lexproject

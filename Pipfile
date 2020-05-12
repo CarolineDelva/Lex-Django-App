@@ -4,17 +4,33 @@ url = "https://pypi.org/simple"
 verify_ssl = true
 
 [dev-packages]
+django-debug-toolbar = "*"
+factory-boy = "*"
 pytest = "*"
 pytest-cov = "*"
+pytest-django = "*"
 
 [packages]
+argon2-cffi = "*"
+awscli = "*"
+coreapi = "*"
+django = "*"
+django-allauth = "*"
+django-crispy-forms = "*"
+django-environ = "*"
+django-extensions = "*"
+django-luigi = "*"
+django-model-utils = "*"
+djangorestframework = "*"
 importlib-metadata = "*"
-xlrd = "*"
-python-snappy = "*"
+luigi = "*"
+numpy = "*"
 pytest = "*"
-pywin32 = "*"
-libsnappy-dev = "*"
-libsnappy = "*"
+python-dotenv = "*"
+"pywin32 =" = 223
+requests = "*"
+xlrd = "*"
+
 
 [requires]
 python_version = "3.7"
