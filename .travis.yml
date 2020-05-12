@@ -42,4 +42,5 @@ jobs:
     - stage: answers
       script:
         - make data
+        - python manage.py migrate
         - python3 -m approject
