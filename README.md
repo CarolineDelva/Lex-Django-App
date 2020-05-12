@@ -13,17 +13,17 @@
 
 ### Background
 
-As a legal assistant, I review daily trawl for legal research. The trawl consists of 5 comprehensive emails of online legal articles and legal cases short summaries. My job is to review the trawls and decide whether each blurb is relevant to our labor and employment legal scope. My job is to also pinpoint what has already been covered. My intent is to create a tool that will help determine which artcles have already been covered based on a title a text. 
+As a legal assistant, I review daily trawls for legal research. The trawls consists of 5 comprehensive emails of online legal articles and legal cases short summaries. My job is to review the trawls and decide whether each blurb is relevant to our labor and employment legal scope. My job is to also pinpoint which article has already been covered. My intent is to create a tool that will help determine which artcles have already been covered based on an entered text and number. 
 
 ### Objective and Design 
 
 
-A full stack application that is powered by an word embeddings to decide how closely related articles are from text and title;
+A full stack application that is powered by a word embeddings to decide how closely related articles are from text and title;
 -	a web-crawler that collects the text data from the email address 
--	a data pipeline to get the data from the email to the model, prepares the data and compute the emails 
+-	a data pipeline to get the data from the email to the model, prepare the data and compute the emails 
   closeness to the text entry
--	a WordEmbedding model to calculate the distance between text 
-- a django app that renders an index.html 
+-	a WordEmbedding model to calculate the distance   between the entered text and the emails   
+- a django app that renders an user interface powered by the luigi pipeline 
 -	a front-end interface that populates the classified summaries  
 -	a unit test that ensures that the functions and classes are returning the correct results 
 
