@@ -1,4 +1,4 @@
-language: python
+language: sh
 dist: xenial
 python:
   - 3.7
