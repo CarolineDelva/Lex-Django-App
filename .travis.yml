@@ -13,7 +13,7 @@ before_install:
  
 install:
   - py -m pip install pipenv
-  
+  - pipenv sync
 
 env:
   region: us-east-1
