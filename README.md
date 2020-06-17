@@ -1,19 +1,11 @@
 
 
 
-[![Build Status](https://travis-ci.com/csci-e-29/2020sp-final-project-CarolineDelva.svg?token=ZL2H1okB9Wa1nixQv9yo&branch=master)](https://travis-ci.com/csci-e-29/2020sp-final-project-CarolineDelva)
-
-[![Maintainability](https://api.codeclimate.com/v1/badges/2d8b36eacf69485382c7/maintainability)](https://codeclimate.com/repos/5eba067f5b36e2014f00ceb3/maintainability)
-
-[![Test Coverage](https://api.codeclimate.com/v1/badges/2d8b36eacf69485382c7/test_coverage)](https://codeclimate.com/repos/5eba067f5b36e2014f00ceb3/test_coverage)
-
-
 ## Legal Newsletter Dashboard 
 
 
 ### Background
-
-As a legal assistant, I review daily trawls for legal research. The trawls consists of 5 comprehensive emails of online legal articles and legal cases short summaries. My job is to review the trawls and decide whether each blurb is relevant to our labor and employment legal scope. My job is to also pinpoint which article has already been covered. My intent is to create a tool that will help determine which artcles have already been covered based on an entered text and number. 
+My intent is to create a tool that helps find the top 5 articles related to a user's entry based on the articles' title and text body.  
 
 ### Objective and Design 
 
